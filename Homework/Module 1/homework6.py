@@ -1,0 +1,15 @@
+my_dict = {'Misha': 1986, 'Sasha': 1990, 'Sergey': 2000}
+print(my_dict)
+print('Здесь я вытащил значение ключа "Миша":', my_dict['Misha'])
+print('Попытка вытащить значение несуществующего ключа:', my_dict.get('Katya', 'Такого имени нет в словаре'))
+my_dict.update({'Kirill': 2000, 'Katya': 2002})
+print('Добавили сразу два ключа, и вот, что получилось:', my_dict)
+key = my_dict.pop('Sergey')
+print('Это значение ключа, который я вытащил из словаря:', key)
+print('Конечный результат:', my_dict)
+my_set = {19, 14, 19, 'Илья', 'Марина', 'Илья'}
+print(my_set)
+my_set.update('potato', [1, 2, 3])
+my_set.add(1990)
+my_set.remove(14)
+print(my_set)
