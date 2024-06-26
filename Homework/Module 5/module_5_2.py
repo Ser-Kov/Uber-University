@@ -1,9 +1,9 @@
 class House:
-    def __init__(self):
-        self.numberOfFloors = 0
+    def __init__(self, numberOfFloors=0):
+        self.numberOfFloors = numberOfFloors
 
     def setNewNumberOfFloors(self, floors):
-        self.numberOfFloors = floors
+        setattr(House, 'numberOfFloors', floors)
         print(self.numberOfFloors)
 
 h1 = House
