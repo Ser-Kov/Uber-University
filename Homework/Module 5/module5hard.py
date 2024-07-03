@@ -68,14 +68,12 @@ class UrTube:
         if self.current_user is None:
             print('Войдите в аккаунт, чтобы смотреть видео')
         else:
-            for i in self.videos:
-                if i.title != name_video:
-                    continue
-                else:
-                    for user in self.users:
-                        if self.current_user != user.nickname:
-                            continue
-                        elif i.adult_mode is True and user.age < 18:
+            if any(name_video == i.title for i in self.videos):
+                for user in self.users:
+                    if self.current_user != user.nickname:
+                        continue
+                    for i in self.videos:
+                        if i.adult_mode is True and user.age < 18:
                             print('Вам нет 18 лет, пожалуйста покиньте страницу')
                         elif i.adult_mode is True and user.age >= 18:
                             count_time = 0
@@ -85,6 +83,8 @@ class UrTube:
                                 print(i.time_now, end=' ')
                                 sleep(1)
                             print('Конец видео')
+            else:
+                print(f'Видео "{name_video}" не существует! Введите корректное имя.')
 
 
 ur = UrTube()
