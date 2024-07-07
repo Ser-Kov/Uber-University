@@ -22,7 +22,7 @@ class Mammal(Animal):
 
 class Predator(Animal):
     def eat(self, food):
-        if isinstance(food, Fruit):
+        if food.edible is True:
             print(f'{self.name} съел {food.name}')
             self.fed = True
         else:
@@ -31,14 +31,13 @@ class Predator(Animal):
 
 
 class Flower(Plant):
-    def __init__(self, name, edible=True):
+    def __init__(self, name):
         super().__init__(name)
-        self.edible = edible
 
 
 class Fruit(Plant):
     def __init__(self, name, edible=True):
-        super().__init__(name)
+        super().__init__(name, edible)
         self.edible = edible
 
 
