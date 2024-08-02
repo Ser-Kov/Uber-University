@@ -2,13 +2,14 @@ import sympy
 
 
 def is_prime(func):
-    def wrapper():
-        result = func()
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
         if sympy.isprime(result):
             print('Простое')
         else:
             print('Составное')
-    return wrapper()
+        return result
+    return wrapper
 
 
 @is_prime
