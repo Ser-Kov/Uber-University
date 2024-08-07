@@ -4,19 +4,19 @@ from random import randint
 from time import sleep
 
 
-class Bank():
+class Bank:
     def __init__(self, balance=0):
         self.balance = balance
-        self.lock = Lock
+        self.lock = Lock()
 
     def deposit(self):
         for i in range(100):
+            count = randint(50, 500)
+            self.balance += count
+            sleep(0.001)
+            print(f'Пополнение: {count}. Баланс: {self.balance}.')
             if self.balance >= 500 and self.lock.locked():
                 self.lock.release()
-                count = randint(50, 500)
-                self.balance += count
-                sleep(0.001)
-                print(f'Пополнение: {count}. Баланс: {self.balance}.')
 
     def take(self):
         for i in range(100):
@@ -28,7 +28,7 @@ class Bank():
                 print(f'Снятие: {count}. Баланс: {self.balance}')
             else:
                 print('Запрос отклонён, недостаточно средств')
-                self.lock.acquire()
+            self.lock.acquire()
 
 
 bk = Bank()
