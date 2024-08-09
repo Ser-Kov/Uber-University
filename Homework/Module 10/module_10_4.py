@@ -32,7 +32,7 @@ class Cafe:
                     guest.start()
                     print(f'{guest.name} сел(-а) за стол номер {table.number}')
                     break
-                elif table.number == len(self.tables) and table.guest:
+                elif table.number == len(self.tables) and table.guest is not None:
                     self.queue.put(guest)
                     print(f'{guest.name} в очереди')
                 else:
