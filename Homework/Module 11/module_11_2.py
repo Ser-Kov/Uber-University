@@ -7,3 +7,7 @@ def introspection_info(obj):
     else:
         module_obj = obj.__name__
     return f'type: {type_obj}, attr: {attr_obj}, module: {module_obj}'
+
+
+number_info = introspection_info(42)
+print(number_info)
