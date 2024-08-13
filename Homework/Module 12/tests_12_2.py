@@ -35,7 +35,7 @@ class Tournament:
             for participant in self.participants:
                 participant.run()
                 if participant.distance >= self.full_distance:
-                    finishers[place] = participant
+                    finishers[place] = participant.name
                     place += 1
                     self.participants.remove(participant)
 
@@ -45,39 +45,35 @@ class Tournament:
 class TournamentTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.all_results = {}
+        cls.all_results = []
 
     def setUp(self):
-        test_obj_1 = Runner('Усейн', 10)
-        test_obj_2 = Runner('Андрей', 9)
-        test_obj_3 = Runner('Ник', 3)
+        self.test_obj_1 = Runner('Усейн', 10)
+        self.test_obj_2 = Runner('Андрей', 9)
+        self.test_obj_3 = Runner('Ник', 3)
 
     @classmethod
     def tearDownClass(cls):
-        for name, result in cls.all_results.items():
-            print(f'{name}: {result}')
+        for i in cls.all_results:
+            print(i)
 
     def test_racing_1(self):
-        test_obj_1 = Runner('Усейн', 10)
-        test_obj_3 = Runner('Ник', 3)
-        Useyn_Nick = Tournament(90, test_obj_1, test_obj_3)
-        self.all_results = Useyn_Nick.start()
-        self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
+        Useyn_Nick = Tournament(90, self.test_obj_1, self.test_obj_3)
+        result_racing = Useyn_Nick.start()
+        self.all_results.append(result_racing)
+        self.assertTrue(result_racing[max(result_racing.keys())], self.test_obj_3.name)
 
     def test_racing_2(self):
-        test_obj_2 = Runner('Андрей', 9)
-        test_obj_3 = Runner('Ник', 3)
-        Andrey_Nick = Tournament(90, test_obj_2, test_obj_3)
-        self.all_results = Andrey_Nick.start()
-        self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
+        Andrey_Nick = Tournament(90, self.test_obj_2, self.test_obj_3)
+        result_racing = Andrey_Nick.start()
+        self.all_results.append(result_racing)
+        self.assertTrue(result_racing[max(result_racing.keys())], self.test_obj_3.name)
 
     def test_racing_3(self):
-        test_obj_1 = Runner('Усейн', 10)
-        test_obj_2 = Runner('Андрей', 9)
-        test_obj_3 = Runner('Ник', 3)
-        Useyn_Andrey_Nick = Tournament(90, test_obj_1, test_obj_2, test_obj_3)
-        self.all_results = Useyn_Andrey_Nick.start()
-        self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
+        Useyn_Andrey_Nick = Tournament(90, self.test_obj_1, self.test_obj_2, self.test_obj_3)
+        result_racing = Useyn_Andrey_Nick.start()
+        self.all_results.append(result_racing)
+        self.assertTrue(result_racing[max(result_racing.keys())], self.test_obj_3.name)
 
 
 if __name__ == '__main__':
