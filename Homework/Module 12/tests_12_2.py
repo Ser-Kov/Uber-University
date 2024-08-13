@@ -57,11 +57,26 @@ class TournamentTest(unittest.TestCase):
         for name, result in cls.all_results.items():
             print(f'{name}: {result}')
 
-    def racing_1(self):
+    def test_racing_1(self):
         test_obj_1 = Runner('Усейн', 10)
         test_obj_3 = Runner('Ник', 3)
         Useyn_Nick = Tournament(90, test_obj_1, test_obj_3)
         self.all_results = Useyn_Nick.start()
+        self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
+
+    def test_racing_2(self):
+        test_obj_2 = Runner('Андрей', 9)
+        test_obj_3 = Runner('Ник', 3)
+        Andrey_Nick = Tournament(90, test_obj_2, test_obj_3)
+        self.all_results = Andrey_Nick.start()
+        self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
+
+    def test_racing_3(self):
+        test_obj_1 = Runner('Усейн', 10)
+        test_obj_2 = Runner('Андрей', 9)
+        test_obj_3 = Runner('Ник', 3)
+        Useyn_Andrey_Nick = Tournament(90, test_obj_1, test_obj_2, test_obj_3)
+        self.all_results = Useyn_Andrey_Nick.start()
         self.assertTrue(self.all_results[max(self.all_results.keys())], test_obj_3.name)
 
 
