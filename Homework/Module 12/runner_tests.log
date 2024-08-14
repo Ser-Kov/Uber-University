@@ -1,0 +1,16 @@
+WARNING | Неверный тип данных для объекта Runner
+Traceback (most recent call last):
+  File "C:\Users\Cергей Ковалевский\PycharmProjects\Urban University\Homework\Module 12\tests_12_4.py", line 77, in test_run
+    test_obj_2 = Runner(80)
+                 ^^^^^^^^^^
+  File "C:\Users\Cергей Ковалевский\PycharmProjects\Urban University\Homework\Module 12\tests_12_4.py", line 13, in __init__
+    raise TypeError(f'Имя может быть только числом, передано {type(name).__name__}')
+TypeError: Имя может быть только числом, передано int
+WARNING | Неверная скорость для Runner
+Traceback (most recent call last):
+  File "C:\Users\Cергей Ковалевский\PycharmProjects\Urban University\Homework\Module 12\tests_12_4.py", line 66, in test_walk
+    test_obj_1 = Runner('Sarah', -5)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Cергей Ковалевский\PycharmProjects\Urban University\Homework\Module 12\tests_12_4.py", line 18, in __init__
+    raise ValueError(f'Скорость не может быть отрицательной, сейчас {speed}')
+ValueError: Скорость не может быть отрицательной, сейчас -5

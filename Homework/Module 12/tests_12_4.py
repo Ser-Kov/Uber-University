@@ -1,6 +1,10 @@
 import logging, unittest
 
 
+logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log', encoding='utf-8',
+                        format='%(levelname)s | %(message)s')
+
+
 class Runner:
     def __init__(self, name, speed=5):
         if isinstance(name, str):
@@ -59,7 +63,7 @@ class RunnerTest(unittest.TestCase):
     # @unittest.skipIf()
     def test_walk(self):
         try:
-            test_obj_1 = Runner('Sarah')
+            test_obj_1 = Runner('Sarah', -5)
             for i in range(10):
                 test_obj_1.walk()
             self.assertEqual(test_obj_1.distance, 50)
@@ -70,7 +74,7 @@ class RunnerTest(unittest.TestCase):
 
     def test_run(self):
         try:
-            test_obj_2 = Runner('John')
+            test_obj_2 = Runner(80)
             for i in range(10):
                 test_obj_2.run()
             self.assertEqual(test_obj_2.distance, 100)
@@ -88,8 +92,6 @@ class RunnerTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO, filemode='w', filename='runner_tests.log', encoding='utf-8',
-                        format='%(levelname)s | %(message)s')
 
     first = Runner('Вося', 10)
     second = Runner('Илья', 5)
