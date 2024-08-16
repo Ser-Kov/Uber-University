@@ -6,8 +6,8 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import asyncio
 
 
-api = ''
-bot = Bot(token=api)
+API = ''
+bot = Bot(token=API)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
 kb_start = ReplyKeyboardMarkup(resize_keyboard=True)
@@ -15,10 +15,15 @@ button_start_1 = KeyboardButton(text='Рассчитать')
 button_start_2 = KeyboardButton(text='Информация')
 kb_start.add(button_start_1, button_start_2)
 
-kb_calculate = InlineKeyboardMarkup()
-button_calculate_1 = InlineKeyboardButton(text='Рассчитать норму калорий', callback_data='calories')
-button_calculate_2 = InlineKeyboardButton(text='Формула расчёта', callback_data='formulas')
-kb_calculate.add(button_calculate_1, button_calculate_2)
+kb_calculate = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [InlineKeyboardButton(text='Рассчитать норму калорий', callback_data='calories')],
+        [InlineKeyboardButton(text='Формула расчёта', callback_data='formulas')]
+    ]
+)
+# button_calculate_1 = InlineKeyboardButton(text='Рассчитать норму калорий', callback_data='calories')
+# button_calculate_2 = InlineKeyboardButton(text='Формула расчёта', callback_data='formulas')
+# kb_calculate.add(button_calculate_1, button_calculate_2)
 
 
 class UserState(StatesGroup):
@@ -30,6 +35,12 @@ class UserState(StatesGroup):
 @dp.message_handler(commands=['start'])
 async def start(message):
     await message.answer('Привет! Я бот, помогающий твоему здоровью', reply_markup=kb_start)
+
+
+@dp.message_handler(text='Информация')
+async def start(message):
+    await message.answer('Этой мой первый бот, который обладает минимальным функционалом. '
+                         'Разработчик: @ser_kovalevsky')
 
 
 @dp.message_handler(text='Рассчитать')
