@@ -26,7 +26,6 @@ initiate_db()
 def get_all_products():
     cursor.execute('SELECT title, description, price FROM Products')
     products = cursor.fetchall()
-    connection.commit()
     return products
 
 
