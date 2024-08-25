@@ -6,7 +6,7 @@ from typing import Annotated, List
 
 
 app = FastAPI()
-templates = Jinja2Templates(directory='templates')
+templates = Jinja2Templates(directory='Homework/Module_16/templates')
 users = []
 
 
